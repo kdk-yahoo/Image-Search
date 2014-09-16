@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ImageSearch</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="search_prompt">Enter Search Terms</string>
+    <string name="search_label">Search</string>
+    <string name="ImageTitle">Image Title</string>
+    <string name="title_activity_image_display">Full Image</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="SizeSetting">Size:</string>
+    <string-array name="imageSizeSettingsSpinner">
+        <item ></item>
+        <item >icon</item>
+        <item >small</item>
+        <item >medium</item>
+        <item >large</item>
+        <item >xlarge</item>
+        <item >xxlarge</item>
+        <item >huge</item>
+    </string-array>
+    <string-array name="imageColorSpinner">
+        <item></item>
+        <item>black</item>
+        <item>blue</item>
+        <item>brown</item>
+        <item>gray</item>
+        <item>green</item>
+        <item>orange</item>
+        <item>pink</item>
+        <item>purple</item>
+        <item>red</item>
+        <item>teal</item>
+        <item>white</item>
+        <item>yellow</item>
+    </string-array>
+    <string-array name ="imageTypeSpinner">
+        <item ></item>
+        <item>face</item>
+        <item>photo</item>
+        <item>clipart</item>
+        <item>lineart</item>
+    </string-array>
+    <string name="sizeSpinnerPrompt">Size</string>
+    <string name="tvColorLabel">Color:</string>
+    <string name="tvTypeLabel">Type:</string>
+    <string name="tvSiteLabel">Site:</string>
+    <string name="etSiteHint">e.g. www.google.com</string>
+
+</resources>
