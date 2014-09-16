@@ -11,6 +11,7 @@ Features completed:
    * [x] User can tap on any imaage to see the full-screen
    * [x] User can scroll down infinitely
    * [x] User can share image
+   * [x] ActionBar SearchView
 
 Walkthrough:
 ![Video walkthrough](image-search.gif)

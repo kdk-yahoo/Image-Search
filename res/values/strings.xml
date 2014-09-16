@@ -47,5 +47,7 @@
     <string name="tvTypeLabel">Type:</string>
     <string name="tvSiteLabel">Site:</string>
     <string name="etSiteHint">e.g. www.google.com</string>
+    <string name="search_title">Image Search</string>
+    <string name="search_hint">Search Term</string>
 
 </resources>

@@ -8,6 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.kdk.imagesearch.R;
@@ -30,7 +33,6 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class SearchActivity extends Activity {
-	private EditText etSearch;
 	private GridView gvResults;
 	private ArrayList<ImageResult> imageResults;
 	private ImageResultsAdapter aImageResults;
@@ -47,16 +49,19 @@ public class SearchActivity extends Activity {
 		aImageResults = new ImageResultsAdapter(this, imageResults);
 		gvResults.setAdapter(aImageResults);
 		settings = new Settings();
+		handleIntent(getIntent());
 		}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		getMenuInflater().inflate(R.menu.search_menu, menu);
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 		return true;
 	}
 	
 	private void setupViews(){
-		etSearch= (EditText) findViewById(R.id.etSearch);
 		gvResults = (GridView) findViewById(R.id.gvResults);
 		gvResults.setOnItemClickListener(new OnItemClickListener(){
 
@@ -89,11 +94,9 @@ public class SearchActivity extends Activity {
 		
 	}
 	
-	public void onImageSearch(View v){
-		search = etSearch.getText().toString();
-		searchImages(search, 0);
-		//searchImages(search,1);
-		
+	
+	protected void onNewIntent(Intent intent){
+		handleIntent(intent);
 	}
 	
 	
@@ -158,6 +161,15 @@ public class SearchActivity extends Activity {
 			builder.appendQueryParameter("as_sitesearch", settings.site);
 		}
 		return builder.build().toString();
+	}
+	
+	private void handleIntent(Intent intent){
+		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+			String query = intent.getStringExtra(SearchManager.QUERY);
+			search = query;
+			searchImages(query, 0);
+		}
+
 	}
 	
 }
